@@ -1,0 +1,54 @@
+{
+    "audio": {
+        "muted": false,
+        "allow_overlap": true,
+        "fixed_sound": false,
+        "fixed_file": "",
+        "volume": 0.9,
+        "random_volume": false,
+        "random_volume_min": 0.6,
+        "random_volume_max": 1.0
+    },
+    "appearance": {
+        "size": [
+            200,
+            200
+        ],
+        "presets": [
+            [
+                200,
+                200
+            ],
+            [
+                400,
+                400
+            ],
+            [
+                600,
+                600
+            ]
+        ],
+        "always_on_top": true,
+        "show_title_bar": false,
+        "opacity": 1.0,
+        "main_image": "assets/main.png",
+        "hover_image": "assets/hover.png",
+        "dark_mode": false,
+        "deluxe_mode": true,
+        "bg_color": "#c96fd2"
+    },
+    "behavior": {
+        "start_with_windows": false,
+        "start_minimized": false,
+        "draggable": true
+    },
+    "hotkeys": {
+        "enabled": true,
+        "open_settings": "<ctrl>+<alt>+s",
+        "toggle_mute": "<ctrl>+<alt>+m"
+    },
+    "advanced": {
+        "debug_logging": false
+    },
+    "click_count": 867
+}

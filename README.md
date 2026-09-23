@@ -25,8 +25,7 @@
 
 <div align="center">
 
-<!-- Guarda tu captura como docs/preview.png (la del contador de clics) -->
-<img src="docs/preview.png" alt="Vista previa con el contador de clics" width="240"/>
+<img src="docs/preview.png" alt="Vista previa con el contador de clics"/>
 
 </div>
 

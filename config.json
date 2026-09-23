@@ -38,8 +38,8 @@
         "opacity": 1.0,
         "frame_delay_ms": 90,
         "window_pos": [
-            2336,
-            1189
+            4291,
+            1231
         ],
         "show_title_bar": false,
         "main_image": "assets/main.png",
@@ -68,7 +68,7 @@
         "show_counter": true,
         "style": "default"
     },
-    "click_count": 6847,
+    "click_count": 6947,
     "hotkeys": {
         "enabled": true,
         "open_settings": "<ctrl>+<alt>+s",

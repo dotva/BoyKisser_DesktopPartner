@@ -1,73 +1,193 @@
-# BoyKisser Desktop Partner
+<div align="center">
 
-¡Bienvenido a **BoyKisser Desktop Partner**!  
-Un programa divertido, interactivo y personalizable para tener una mascota virtual en tu escritorio, con sonidos, animaciones, contador de clics, hotkeys y mucho más.
+<img src="https://capsule-render.vercel.app/api?type=waving&height=170&color=gradient&customColorList=12,20,24&section=header&text=BoyKisser%20Desktop&fontSize=46&fontColor=ffffff&fontAlignY=38&desc=tu%20compa%C3%B1ero%20virtual%20para%20el%20escritorio&descSize=17&descAlignY=60" alt="BoyKisser Desktop" width="100%"/>
 
----
+<img src="assets/click/stand.gif" alt="BoyKisser" width="200"/>
 
-## Características principales
+<br/>
 
-- **Mascota virtual**: Imagen PNG flotante y sin fondo, tipo "Bongo Cat", que reacciona a tus clics y teclas.
-- **Contador de clics**: Guarda tu progreso y muestra logros al alcanzar hitos.
-- **Sonidos personalizados**: Reproduce sonidos al interactuar y al cerrar el programa (¡puedes añadir los tuyos!).
-- **Hotkeys configurables**: Atajos para abrir la configuración y silenciar el audio.
-- **Configuración avanzada**: Personaliza apariencia, comportamiento, audio, hotkeys y más.
-- **Modo Deluxe**: Interfaz moderna, neón y transparente para la ventana de configuración.
-- **Redes sociales**: Acceso directo a Discord y GitHub desde la configuración.
-- **Exporta/importa tu configuración**: Guarda y comparte tus preferencias fácilmente.
+**Una mascota que vive en tu escritorio, reacciona a cada clic y cuenta cuánto le has hecho caso.**
 
----
+<br/>
+
+[![Python](https://img.shields.io/badge/Python-3.9+-ff8fc0?style=for-the-badge&logo=python&logoColor=white&labelColor=6b4356)](https://www.python.org/)
+[![Windows](https://img.shields.io/badge/Windows-transparencia%20total-ff8fc0?style=for-the-badge&logo=windows&logoColor=white&labelColor=6b4356)](#-instalación)
+[![Licencia](https://img.shields.io/badge/Licencia-libre%20y%20gratis-ff8fc0?style=for-the-badge&labelColor=6b4356)](#-licencia)
+[![Discord](https://img.shields.io/badge/Discord-Imperio%20Femboy-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/uxRavuMMdm)
+
+</div>
+
+<br/>
+
+## 💗 ¿Qué es esto?
+
+**BoyKisser Desktop** es una mascota de escritorio hecha con Python. Flota sobre tus ventanas **sin fondo** (solo se ve el personaje), respira con una animación en bucle y **reacciona cada vez que haces clic o pulsas una tecla**, con sonidos, hitos y un contador que no se olvida de ti aunque cierres el programa.
+
+<div align="center">
+
+<!-- Guarda tu captura como docs/preview.png (la del contador de clics) -->
+<img src="docs/preview.png" alt="Vista previa con el contador de clics" width="240"/>
+
+</div>
+
+<br/>
+
+## ✨ Características
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 🐾 Mascota animada
+Reposo en bucle con `stand.gif` y animación de reacción con `1.png, 2.png, 3.png…`. Si haces clic muchas veces seguidas, entra en un bucle corto más intenso.
+
+</td>
+<td width="50%" valign="top">
+
+### 🫥 Fondo realmente transparente
+En Windows se recorta el fondo de verdad, sin recuadros ni bordes raros. En otros sistemas usa un fondo pastel de respaldo.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+### 🖱️ Ratón y ⌨️ teclado
+Cuenta clics, pulsaciones o ambos a la vez. Tú decides qué cuenta como «cariño».
+
+</td>
+<td valign="top">
+
+### 🔢 Contador con hitos
+Tu progreso se guarda solo. Al llegar a 10, 100, 500, 1 000, 50 000… salta una notificación con sonido. 🎉
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+### 🔊 Sonidos a tu gusto
+Un sonido aleatorio en cada clic y otro al cerrar. Solo tienes que soltar tus `.mp3`, `.wav` o `.ogg` en las carpetas.
+
+</td>
+<td valign="top">
+
+### 🎀 Tema pastel
+Interfaz blanco-rosada y semitransparente, sin ajustes de más que romper.
+
+</td>
+</tr>
+</table>
+
+<br/>
 
 ## Instalación
 
-1. Descarga o clona este repositorio.
-2. Instala las dependencias:
-   ```bash
-   pip install pygame pillow pynput
-   ```
-   *(Opcional para notificaciones nativas: `pip install win10toast`)*
+**1.** Descarga o clona el repositorio
 
-3. Ejecuta el programa:
-   ```bash
-   python test.py
-   ```
+```bash
+git clone https://github.com/dotva/BoyKisser_DesktopPartner.git
+cd BoyKisser_DesktopPartner
+```
 
----
+**2.** Instala las dependencias
 
-## Redes sociales
+```bash
+pip install pygame pillow pynput
+```
 
-### ¡Únete al IMPERIO FEMBOY en Discord!
+> 💡 Opcional, solo si quieres la opción *«Iniciar con Windows»*: `pip install pywin32`
 
-[![ÚNETE AL DISCORD](https://img.shields.io/badge/Discord-Únete%20ahora-%235865F2?style=for-the-badge&logo=discord)](https://discord.com/)
+**3.** Ejecútalo
 
-> **¡No te pierdas las novedades, eventos y memes!**
->
-> [ÚNETE AL DISCORD](https://discord.gg/uxRavuMMdm)
+```bash
+python app.py
+```
 
----
+¡Y ya está! Aparecerá tu compañero en pantalla.
 
-### GitHub
+<br/>
 
-[![GitHub](https://img.shields.io/badge/GitHub-BoyKisser%20Desktop-%23181717?style=for-the-badge&logo=github)](https://github.com/dotva/BoyKisser_DesktopPartner)
+## Cómo se usa
 
----
+| Acción | Qué pasa |
+|:--|:--|
+| **Clic izquierdo** (en cualquier sitio) | Animación, sonido y +1 al contador |
+| **Arrastrar** la mascota | La mueves por el escritorio (recuerda su posición) |
+| **Clic derecho** sobre ella | Menú con *Configuración* y *Cerrar* |
+| <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>S</kbd> | Abre la configuración |
+| <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>M</kbd> | Silencia / activa el audio |
 
-## Licencia
+<br/>
 
-Este proyecto es **gratuito y de uso libre**.  
-Hecho en su mayoría por IA, pero con supervisión humana. ¡Disfrútalo y comparte!
+## Ponle tus propias imágenes y sonidos
 
----
+<details>
+<summary><b>Ver estructura de carpetas</b></summary>
 
-## ÚNETE AL DISCORD
+<br/>
 
-> **¡ÚNETE YA!**
->
-> [https://discord.gg/uxRavuMMdm](https://discord.gg/uxRavuMMdm)
->
-> ¡No te quedes fuera del mejor servidor de Discord para femboys, memes y comunidad!
+```text
+📁 assets/
+ ├─ main.png            → imagen de repuesto si no hay stand.gif
+ ├─ 📁 click/
+ │   ├─ stand.gif       → reposo en bucle (cuando no haces clic)
+ │   ├─ 1.png           → animación de clic, en orden numérico
+ │   ├─ 2.png
+ │   └─ 3.png …         → al terminar, vuelve al stand.gif
+ └─ 📁 bye/
+     └─ *.mp3 / .wav / .ogg   → despedida aleatoria al cerrar
+📁 sounds/
+ └─ *.mp3 / .wav / .ogg       → sonido aleatorio en cada clic
+```
 
----
+Pulsa **«Recargar imágenes y sonidos»** en *Configuración → Apariencia* para verlos al momento, sin reiniciar.
 
-**BoyKisser Desktop Partner**  
-¡Tu compañero virtual más kawaii y divertido!
+> **Consejo:** usa GIF o PNG **con fondo transparente**. Si falta todo, la app no se rompe: muestra un corazoncito provisional y te avisa.
+
+</details>
+
+<details>
+<summary><b>Qué puedes cambiar en la configuración</b></summary>
+
+<br/>
+
+| Sección | Opciones |
+|:--|:--|
+| 🎨 **Apariencia** | Tamaño (150 / 200 / 300 px), siempre encima, fondo transparente, opacidad |
+| 🔊 **Audio** | Silenciar, volumen, botón de prueba |
+| 🧩 **Comportamiento** | Contar ratón y/o teclado, iniciar con Windows, iniciar minimizado, arrastrar, mostrar contador, atajos |
+| 💬 **Redes sociales** | Discord y GitHub |
+| 🛠️ **Avanzado** | Registro de depuración, exportar / importar configuración, reiniciar contador |
+
+</details>
+
+<br/>
+
+## 💬 Comunidad
+
+<div align="center">
+
+### ¡Únete al **IMPERIO FEMBOY**! 👑
+
+Novedades, eventos, ideas y memes.
+
+[![Únete al Discord](https://img.shields.io/badge/Discord-%C3%9Anete%20ahora-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/uxRavuMMdm)
+[![GitHub](https://img.shields.io/badge/GitHub-Dale%20una%20%E2%AD%90-ff8fc0?style=for-the-badge&logo=github&logoColor=white&labelColor=6b4356)](https://github.com/dotva/BoyKisser_DesktopPartner)
+
+</div>
+
+<br/>
+
+## 📜 Licencia
+
+Proyecto **gratuito y de uso libre**. Hecho en gran parte con ayuda de IA y con supervisión humana. Disfrútalo y compártelo. 💗
+> soy tremendo vago pero con un objetivo claro
+
+<br/>
+
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&height=110&color=gradient&customColorList=12,20,24&section=footer" alt="" width="100%"/>
+
+</div>

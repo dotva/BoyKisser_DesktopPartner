@@ -54,7 +54,7 @@ from tkinter import filedialog, messagebox, ttk
 import tkinter as tk
 
 import pygame
-from PIL import Image, ImageDraw, ImageSequence, ImageTk
+from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageSequence, ImageTk
 from pynput import keyboard, mouse
 
 # ---------------------- Constantes de tema (pastel boykisser) ----------------------
@@ -355,10 +355,33 @@ class GlobalInputApp:
         return CHROMA_KEY if self._chroma_enabled else MASCOT_FALLBACK_BG
 
     # ---------------- Imágenes ----------------
+    @staticmethod
+    def _clean_alpha(img: Image.Image, speck_radius: int = 2) -> Image.Image:
+        """Devuelve un canal alfa BINARIO (0/255) sin motas sueltas de 1-2 px.
+        Los GIF suelen traer píxeles 'basura' aislados en la zona transparente;
+        al reescalar se mezclaban con el color clave y salía ruido azul."""
+        alpha = img.getchannel("A").point(lambda v: 255 if v >= 128 else 0)
+        core = alpha.filter(ImageFilter.MinFilter(3))                       # erosión: elimina motas
+        grown = core.filter(ImageFilter.MaxFilter(2 * speck_radius + 1))    # recupera los bordes reales
+        return ImageChops.multiply(alpha, grown)
+
     def _flatten(self, img: Image.Image, w: int, h: int) -> ImageTk.PhotoImage:
-        img = img.convert("RGBA").resize((w, h))
-        bg = Image.new("RGBA", (w, h), hex_to_rgba(self._bg_key()))
-        composed = Image.alpha_composite(bg, img).convert("RGB")
+        img = img.convert("RGBA")
+        key = self._bg_key()
+        if self._chroma_enabled:
+            # Transparencia real (Windows): -transparentcolor solo entiende UN color exacto,
+            # así que no puede haber píxeles semitransparentes ni mezclados con el color clave.
+            img.putalpha(self._clean_alpha(img))
+            # Reescalar con alfa premultiplicado ("RGBa") evita halos de color en los bordes
+            img = img.convert("RGBa").resize((w, h), Image.LANCZOS).convert("RGBA")
+            mask = img.getchannel("A").point(lambda v: 255 if v >= 128 else 0)
+            composed = Image.new("RGB", (w, h), hex_to_rgba(key)[:3])
+            composed.paste(img.convert("RGB"), (0, 0), mask)
+        else:
+            # Sin transparencia real: mezcla suave con el color de fondo de respaldo
+            img = img.convert("RGBa").resize((w, h), Image.LANCZOS).convert("RGBA")
+            bg = Image.new("RGBA", (w, h), hex_to_rgba(key))
+            composed = Image.alpha_composite(bg, img).convert("RGB")
         return ImageTk.PhotoImage(composed)
 
     def load_images(self):

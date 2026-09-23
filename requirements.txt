@@ -1,3 +1,4 @@
 Pillow
 pynput
 pywin32
+pip install pygame pillow pynpu

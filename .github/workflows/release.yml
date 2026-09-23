@@ -1,0 +1,67 @@
+name: Build y Release
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "**.md"
+      - "docs/**"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+
+    env:
+      MAJOR: "1"
+      VERSION: 1.${{ github.run_number }}
+
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v4
+
+      - name: Instalar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Instalar dependencias
+        run: pip install pygame pillow pynput pyinstaller
+
+      - name: Compilar el .exe
+        run: >
+          pyinstaller app.py
+          --onefile
+          --windowed
+          --name boykisser
+          --hidden-import pynput.keyboard._win32
+          --hidden-import pynput.mouse._win32
+
+      - name: Empaquetar exe + assets (opcional)
+        run: |
+          mkdir pkg
+          Copy-Item dist\boykisser.exe pkg\
+          if (Test-Path assets) { Copy-Item assets pkg\assets -Recurse }
+          if (Test-Path sounds) { Copy-Item sounds pkg\sounds -Recurse }
+          Compress-Archive -Path pkg\* -DestinationPath BoyKisser-Desktop.zip
+
+      - name: Publicar release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ env.VERSION }}
+          target_commitish: ${{ github.sha }}
+          name: Actualización ${{ env.VERSION }}
+          body: |
+            ## Actualización ${{ env.VERSION }}
+
+            ${{ github.event.head_commit.message }}
+
+            ---
+            **boykisser.exe** → solo el programa
+            **BoyKisser-Desktop.zip** → programa + imágenes y sonidos
+          files: |
+            dist/boykisser.exe
+            BoyKisser-Desktop.zip
